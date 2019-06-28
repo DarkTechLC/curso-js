@@ -1,0 +1,87 @@
+### Anotações JS ###
+
+# Converter para inteiro, força: 'Number.parseInt(n)'
+# Converte para decimal, força: 'Number.parseFloat(n)'
+# Converte para ambos: 'Number(n)'
+
+# Converter para string: 'String(n)' ou 'n.toString()'
+
+# Comprimento da variável: 'n.length'
+# Transformar em maiúscula: 'n.toUpperCase()'
+# Transformar em minúscula: 'n.toLowerCase()'
+
+# Modificar os valores de números flutuantes e trocar ponto pela vírgula: 'n.toFixed(x).replace('.', ',')'
+
+# Formatar números como valores monetários (Real):
+# n.toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'})
+
+## OPERADORES:
+# ARITMÉTICOS
+var n = 3
+n += 2 >> n = n + 2
+n -= 3 >> n = n - 3
+n *= 4 >> n = n * 4
+n /= 5 >> n = n / 5
+n **= 6 >> n = n ** 6
+n %= 7 >> n = n % 7
+
+~> *Incremento
+x = 1
+x++ >> x = x + 1
+x-- >> x = x - 1
+
+# RELACIONAIS
+> >> maior que
+< >> menor que
+>= >> maior ou igual
+<= >> menor ou igual
+== >> igual
+!= >> diferente
+
+~> Operador de identidade (===):
+5 == '5' >> true
+5 === '5' >> false
+
+# LÓGICOS
+! >> negação
+&& >> e
+|| >> ou
+
+~> Ordem de precedência
+// oper. aritméticos -> oper. relacionais -> ! -> && -> ||
+
+# TERNÁRIO
+// teste?true:false
+media = 5
+media > 6?"Aprovado":"Reprovado"
+
+## CONDIÇÕES MÚLTIPLAS
+
+switch(expressão) {
+	case valor1:
+		// code...
+		break
+	case valor2:
+		// code...
+		break
+	case valor3:
+		// code...
+		break
+	default:
+		// code...
+		break
+}
+
+## REPETIÇÕES
+
+while(condição) {
+	// code...
+}
+
++++++++++++++++++++
+
+do {
+	// code...
+} while(condição)
+
+

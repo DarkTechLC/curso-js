@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width-device-width, initial-scale=1.0">
+	<title>Somando números</title>
+	<style>
+		body {
+			background-color: rgb(24, 24, 24);
+			color: rgb(211, 218, 227);
+			font: normal 18pt Arial;
+		}
+		input {
+			font: normal 16pt Arial;
+			width: 100px;
+			border: none;
+			border-radius: 4px;
+			padding: 3px;
+			background-color: rgb(211, 218, 227);
+			color: rgb(24, 24, 24);
+		}
+		input#botao {
+			background-color: rgb(79, 158, 228);
+			margin-left: 10px;
+		}
+		code {
+			color: rgb(79, 158, 228);
+		}
+	</style>
+</head>
+<body>
+	<h1>Somar Valores</h1>
+	<input type="number" name="bnum1" id="bnum1"> +
+	<input type="number" name="bnum2" id="bnum2">
+	<input type="button" value="SOMAR" onclick="somar()" id="botao">
+	<h3 id="res"></h3>
+
+	<script>
+		function somar() {
+			var tnum1 = window.document.getElementById('bnum1')
+			var tnum2 = window.document.querySelector('input#bnum2')
+			var res = window.document.getElementById('res')
+			var num1 = Number(tnum1.value)
+			var num2 = Number(tnum2.value)
+			var soma = num1 + num2
+			res.innerHTML = `A soma de <code>(${num1}) + (${num2})</code> é: <code>${soma}</code>`
+		}
+	</script>
+</body>
+</html>
+
+

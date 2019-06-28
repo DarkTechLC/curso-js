@@ -1,0 +1,2 @@
+Extenções para VS Code:
+* Watch in Chrome
