@@ -1,37 +1,31 @@
 function contar() {
-	var numStart = document.getElementById('tstart').value
-	var numEnd = document.getElementById('tend').value
-	var razao = document.getElementById('tpass').value
-	var num = Number(numStart)
-	var result = document.getElementById('result')
-	result.innerHTML = ''
+	let tNumStart = document.getElementById('tstart')
+	let tNumEnd = document.getElementById('tend')
+	let tRazao = document.getElementById('tpass')
+	let result = document.getElementById('result')
 
-	if (numStart == '' || numEnd == '' || razao == '') {
+	if (tNumStart.value.length == 0 || tNumEnd.value.length == 0 || tRazao.value.length == 0) {
 		result.innerHTML = "Preencha todos os campos!"
-	} else if(razao == 0) {
-		result.innerHTML = "A razão não pode ser igual a 0."
-	} else if(numStart < numEnd && razao > 0) {
-		while(num <= Number(numEnd)) {
-			result.innerHTML += `${num} ➡ `
-			num = num + Number(razao)
-		}
-	} else if(numStart > numEnd && razao < 0) {
-		while(num >= Number(numEnd)) {
-			result.innerHTML += `${num} ➡ `
-			num = num + Number(razao)
-		}
 	} else {
-		result.innerHTML = "Opção inválida!"
+		result.innerHTML = ''
+		let numStart = Number(tNumStart.value)
+		let numEnd = Number(tNumEnd.value)
+		let razao = Number(tRazao.value)
+		if (razao <= 0) {
+			alert("Será atribuido o valor 1, caso o passo seja menor ou igual a 0.")
+			razao = 1 
+		}
+		if (numEnd > numStart) {
+			for(let cont = numStart; cont <= numEnd; cont += razao) {
+				result.innerHTML += `${cont} ➡ `
+			}
+		} else {
+			for(let cont = numStart; cont >= numEnd; cont -= razao) {
+				result.innerHTML += `${cont} ➡ `
+			}
+		}
+		result.innerHTML += `✅`
 	}
 }
 
 botao.addEventListener('click', contar)
-// ns + np <= ne
-
-//v = ns + np
-//v = v + np
-
-//v =  1 - 1
-// v = 0 - 1
-
-//10 - r = n
