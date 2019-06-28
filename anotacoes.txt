@@ -84,4 +84,10 @@ do {
 	// code...
 } while(condição)
 
++++++++++++++++++++
+
+for(inicio;teste;incremento) {
+	
+}
+
 
