@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0; 
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-color: rgb(255, 255, 255);
+            color: rgb(24, 24, 24);
+        }
+        header {
+            width: 700px;
+            margin: 30px auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: solid 3px rgb(24, 24, 24);
+        }
+        header button {
+            background-color: rgb(8, 79, 185);
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            font-weight: bold;
+        }
+        section {
+            width: 700px;
+            font-size: 18pt;
+        }
+        div#form {
+            display: flex;
+            flex-direction: column;
+        }
+        div#form p {
+            margin-bottom: 10px;
+        }
+        div#form input[type=number] {
+            height: 40px;
+            border: solid 2px rgb(8, 79, 185);
+            border-radius: 4px;
+            font-size: 14pt;
+            padding: 5px;
+            background-color: transparent;
+        }
+        div#form input[type=button] {
+            width: 200px;
+            background-color: rgb(8, 79, 185);
+            color: rgb(255, 255, 255);
+            border: none;
+            border-radius: 4px;
+            padding: 10px;
+            font-weight: bold;
+        }
+        div p#result {
+            margin-top: 20px;
+            color: rgb(8, 79, 185);
+            font-size: 20pt;
+            font-weight: bold;
+        }
+        @media (max-width: 800px) {
+            header, section {
+                width: 100%;
+                margin: 0;
+                padding: 15px;
+            }
+            div#form input {
+                width: 100%;
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Verificador de retas</h1>
+        <button>Night Mode</button>
+    </header>
+    <section>
+        <div id="form">
+            <p>Equações do primeiro grau, apresentam sua representação gráfica como uma <strong>reta</strong>.<br>
+            Sua forma geral é: <strong><code>y = ax + b</code></strong>, em que <em>a</em> é o coeficiente angular e <em>b</em> é o coeficiente linear.</p>
+            <hr><br>
+            <p>
+                Coeficiente angular da primeira reta:
+                <input type="number" id="tca1" class="formin">
+            </p>
+            <p>
+                Coeficiente angular da segunda reta:
+                <input type="number" id="tca2" class="formin">
+            </p>
+            <p>
+                Coeficiente linear da primeira reta:
+                <input type="number" id="tcl1" class="formin">
+            </p>
+            <p>
+                Coeficiente linear da segunda reta:
+                <input type="number" id="tcl2" class="formin">
+            </p>
+            <input type="button" value="Verificar" id="bcheck">
+        </div>
+        <div>
+            <p id="result">Aguadando valores...</p>
+        </div>
+    </section>
+
+    <script>
+        function retas() {
+            let ca1 = document.getElementById('tca1').value
+            let ca2 = document.getElementById('tca2').value
+            let cl1 = document.getElementById('tcl1').value
+            let cl2 = document.getElementById('tcl2').value
+            let result = document.getElementById('result')
+
+            if(ca1.length == 0 || ca2.length == 0 || cl1.length == 0 || cl2.length == 0) {
+                alert("Preencha todos os campos!")
+            } else if(ca1 == ca2 && cl1 == cl2) {
+                result.innerHTML = `Retas paralelas coincidentes!`
+            } else if(ca1 == ca2 && cl1 != cl2) {
+                result.innerHTML = `Retas paralelas distintas!`
+            } else if(ca1 != ca2 && ca1*ca2 == -1) {
+                result.innerHTML = `Retas concorrentes perpendiculares!`
+            } else {
+                result.innerHTML = `Retas concorrentes!`
+            }
+        }
+
+        function muda() {
+            let page = document.body.style
+            let lineHeader = document.querySelector('header').style
+            let inputNumber = document.querySelector('.formin').style
+
+            if(page.background == "rgb(255, 255, 255)"){
+                page.background = "rgb(24, 24, 24)"
+                page.color = "rgb(255, 255, 255)"
+                lineHeader.borderBottomColor =  "rgb(255, 255, 255)"
+                inputNumber.color = "rgb(255, 255, 255)"
+            } else {
+                page.background = "rgb(255, 255, 255)"
+                page.color = "rgb(24, 24, 24)"
+                lineHeader.borderBottomColor =  "rgb(24, 24, 24)"
+                inputNumber.color = "rgb(24, 24, 24)"
+            }
+        }
+
+        document.querySelector('#bcheck').addEventListener('click', retas)
+        document.querySelector('button').addEventListener('click', muda)
+    </script>
+</body>
+</html>

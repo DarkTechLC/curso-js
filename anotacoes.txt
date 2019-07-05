@@ -90,4 +90,24 @@ for(inicio;teste;incremento) {
 	
 }
 
+## VARIÁVEIS COMPOSTAS (Array/Vetores)
 
+let n = [1, 3, 9] // Definir um array
+n[0] // Imprimir valor da primeira posição
+n[1] = 4 // Alterar/adicionar valor da segunda posição
+n.push(10) // Adicionar um novo elemento ao final do array
+n.length // Imprimir a quantidade de elementos do array
+n.indexOf(3) // Verificar se um valor está presente no array e retornar sua posição
+
+// Repetições em arrays
+for(let i in n) {
+	// code...
+}
+
+## FUNÇÕES
+function ação(parâmetro) {
+	// code...
+	return resultado
+}
+
+ação(5) // chamada
