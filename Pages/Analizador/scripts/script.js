@@ -41,7 +41,7 @@ function end() {
         let larger = values[0]
         let smaller = values[0]
         let amount = 0
-        for (i in values) {
+        for (let i in values) {
             amount += values[i]
             if (values[i] > larger)
                 larger = values[i]
