@@ -1,46 +1,63 @@
-var values = []
-var result = document.getElementById('result')
+let number = document.querySelector('input#tnum')
+let list = document.querySelector('select#seltab')
+let result = document.querySelector('div#result')
+let values = []
+
+function isNumber(n) {
+    if (Number(n) >= 1 && Number(n) <= 100) {
+        return true
+    } else {
+        return false
+    }
+}
+
+function inList(n, l) {
+    if (l.indexOf(Number(n)) != -1) {
+        return true
+    } else {
+        return false
+    }
+}
 
 function add() {
-    let seltab = document.getElementById('seltab')
-    let valueAdd = document.getElementById('tnum').value
-    if (valueAdd.length == 0) {
-        alert("Preencha o campo!")
-    } else if (valueAdd < 1 || valueAdd > 100) {
-        alert("Número inválido!")
-    } else {
-        seltab.innerHTML = ''
+    if (isNumber(number.value) && !inList(number.value, values)) {
+        values.push(Number(number.value))
+        let item = document.createElement('option')
+        item.text = `Valor ${number.value} adicionado`
+        list.appendChild(item)
         result.innerHTML = ''
-        values.push(valueAdd)
-        for (let i in values) {
-            let item = document.createElement('option')
-            item.innerText = `Valor ${values[i]} adicionado`    
-            seltab.appendChild(item)
-        }
+    } else {
+        alert('Valor inválido ou já encontrado na lista!')
     }
+    number.value = ''
+    number.focus()
 }
 
 function end() {
     if (values.length == 0) {
-        alert("Adicione valores antes!")
+        alert('Adicione valores para prosseguir!')
     } else {
-        let quant = values.length
-        values.sort()
-        let numMaior = values[quant-1]
-        let numMenor = values[0]
-        let soma = 0
-        for (let i in values) {
-            soma += Number(values[i])
+        let total = values.length
+        let larger = values[0]
+        let smaller = values[0]
+        let amount = 0
+        for (i in values) {
+            amount += values[i]
+            if (values[i] > larger)
+                larger = values[i]
+            if (values[i] < smaller)
+                smaller = values[i]
         }
-        let media = soma/quant
-
-        result.innerHTML = `O número de valores adicionados foi ${quant}.<br>`
-        result.innerHTML += `O maior número valor adicionado foi ${numMaior}.<br>`
-        result.innerHTML += `O menor número valor adicionado foi ${numMenor}.<br>`
-        result.innerHTML += `A soma dos valores adicionados é ${soma}.<br>`
-        result.innerHTML += `A média dos valores adicionados é ${media}.<br>`
+        let mean = amount / total
+        
+        result.innerHTML = ''
+        result.innerHTML += `<p>Ao todo, temos ${total} números cadastrados.</p>`
+        result.innerHTML += `<p>O maior número é ${larger}.</p>`
+        result.innerHTML += `<p>O menor número é ${smaller}.</p>`
+        result.innerHTML += `<p>A soma dos números é ${amount}.</p>`
+        result.innerHTML += `<p>A média dos números é ${mean}.</p>`
     }
 }
 
-document.getElementById('endb').addEventListener('click', end)
 document.getElementById('addb').addEventListener('click', add)
+document.getElementById('endb').addEventListener('click', end)
